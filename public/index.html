@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyGame</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0084ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <canvas id="myCanvas" width="800px" height="450px"></canvas>
+    <script>
+        // get the v query parameter from the url
+        var v = window.location.search.match(/v=(\d+)/);
+        var script = document.createElement('script');
+        if (v) {
+            script.src = `client-${v[1]}.js`;
+        } else {
+            script.src = 'client.js';
+        }
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
+
